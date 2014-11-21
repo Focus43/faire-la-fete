@@ -25,7 +25,7 @@
 
   .cellar {height:75%;background:url('#{$image-path}textured.jpg') 50% 50%;
     .percent-width {text-align:left;}
-    h2 {text-align:center;margin-top:0;}
+    h2 {margin-top:0;}
     h3 {margin-bottom:2rem;}
     h4 {border-bottom:1px solid $theme-green;padding-bottom:1rem;}
   }
@@ -37,12 +37,43 @@
 
   .experience {text-align:center;padding:4rem 0;
     .grid {font-size:0;line-height:0;
-      .node {display:inline-block;width:100%;height:300px;background:transparent no-repeat 50% 50%;background-size:cover;}
+      .node {font-size:1rem;line-height:1;color:#fff;position:relative;display:inline-block;width:100%;height:300px;background:transparent no-repeat 50% 50%;background-size:cover;overflow:hidden;
+        h3 {@include text-shadow(0 1px 1px #000);}
+        .tabular {@include transform(translateY(0));@include transition(all 0.35s ease);}
+        .hoverd {
+          h3 span {display:inline-block;margin:0 auto;padding-bottom:8px;border-bottom:2px solid transparent;}
+          p {font-size:1.3rem;line-height:1.5;}
+        }
+        &:hover .tabular {@include transform(translateY(-100%));}
+      }
 
-      .purchase {background-image:url('#{$image-path}experience/purchase.jpg');}
-      .recipes {width:50%;background-image:url('#{$image-path}experience/recipes.jpg');}
-      .press {width:50%;background-image:url('#{$image-path}experience/press.jpg');}
-      .events {background-image:url('#{$image-path}experience/events.jpg');}
+      .purchase {background-image:url('#{$image-path}experience/purchase.jpg');
+        .hoverd {background:rgba($theme-purple, 0.7);
+          h3 span {border-bottom-color:$theme-green;}
+        }
+      }
+      .recipes {width:50%;background-image:url('#{$image-path}experience/recipes.jpg');
+        .hoverd {background:rgba($theme-green, 0.7);
+          h3 span {border-bottom-color:$theme-purple;}
+        }
+      }
+      .press {width:50%;background-image:url('#{$image-path}experience/press2.jpg');
+        .hoverd {background:rgba(darken($theme-purple, 10%), 0.7);
+          h3 span {border-bottom-color:$theme-green;}
+        }
+      }
+      .events {background-image:url('#{$image-path}experience/events.jpg');
+        .hoverd {background:rgba(darken($theme-green, 10%), 0.7);
+          h3 span {border-bottom-color:$theme-purple;}
+        }
+      }
+    }
+  }
+
+  .contact {height:80%;background:url('#{$image-path}textured.jpg') repeat 50% 50%;
+    p {margin-bottom:2rem;}
+    .contact-form {padding:($grid-gutter-width * 2);background:rgba(0,0,0,0.08);
+      input, textarea {background:transparent;border:0;outline:0;border-bottom:3px solid $theme-green;@include box-shadow(none);}
     }
   }
 }

@@ -2,7 +2,7 @@
 html, body {font-size:$font-size-base;height:100%;-webkit-font-smoothing:antialiased;}
 body {overflow-x:hidden;}
 input, textarea, button, a {&:focus, &:active {outline:0 !important;@include box-shadow(none !important);}}
-a, a:hover, a:active {cursor:pointer;text-decoration:none !important;}
+a, a:hover, a:active {cursor:pointer;}
 img {@include img-responsive(inline-block);}
 .tabular {width:100%;height:100%;display:table;
   .cellular {width:100%;height:100%;display:table-cell;vertical-align:middle;text-align:center;}
@@ -23,10 +23,19 @@ select {
 
 .page-body {}
 
-.percent-width {display:inline-block;width:100%;margin:0 auto;
+.container-fluid {
   &.p-65 {max-width:65%;}
   &.p-75 {max-width:75%;}
+  &.m-800 {max-width:800px;}
 }
+//.percent-width {padding:0 15px;display:inline-block;width:100%;margin:0 auto;
+//  &.p-65 {max-width:65%;}
+//  &.p-75 {max-width:75%;}
+//}
+
+h2.subheader {padding-bottom:30px;bottom:0 0 30px;text-align:center;background:transparent url('#{$image-path}divider.png') no-repeat 50% 100%;}
 
 // Fix scroll overflow while in edit mode
-html.cms-admin .page-body {height:calc(100% - 49px);}
+html.cms-admin {
+  header {top:49px;}
+}

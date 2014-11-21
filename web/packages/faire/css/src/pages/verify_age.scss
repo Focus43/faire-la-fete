@@ -1,7 +1,11 @@
 .verify-age {background:url('#{$image-path}bg_verify_age.jpg') no-repeat 50% 50%;background-size:cover;
-  .logo {display:block;position:absolute;top:0;left:50%;margin-left:-179px;}
+  header, footer {display:none;}
 
-  form {color:#fff;background:rgba(0,0,0,0.5);padding:2rem;display:inline-block;width:100%;max-width:920px;
+  .logo {display:block;position:absolute;top:-18px;left:50%;margin-left:-179px;}
+
+  form {position:relative;color:#fff;background:rgba(0,0,0,0.5);padding:2rem;display:inline-block;width:100%;max-width:920px;
+    .underage {font-size:1.4rem;position:absolute;bottom:100%;left:0;right:0;width:100%;padding:1rem;background:#bd362f;color:darken(#bd362f, 25%);}
+
     select {border:0;font-family:$font-family-sans-serif;}
     .form-inline {font-size:0;line-height:0;
       select {width:33.33%;font-size:1rem;line-height:1;}

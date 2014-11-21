@@ -1,7 +1,5 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: jon
- * Date: 11/20/14
- * Time: 11:26 AM
- */ 
+<footer class="tabular">
+    <div class="cellular">
+        <p>&copy; <?php echo date('Y'); ?> Curious Cork Imports. All Rights Reserved.</p>
+    </div>
+</footer>
