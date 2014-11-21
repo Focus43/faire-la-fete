@@ -50,22 +50,23 @@ Vagrant.configure("2") do |config|
           :redis => true,
           # If :install = false, gruntjs, bower, and npm won't be installed as they need Node
           :nodejs => {
-              :install      => false,
+              :install      => true,
               :npm_version  => '2.1.7',
               :gruntjs      => false,
               :gulpjs       => true,
               :bower        => true,
               :npm          => {
-                :auto_install_packages => true,
+                :auto_install_packages => false,
                 :package_json_location => '/home/vagrant/app/build' # defaults to ../build
               }
           },
           # If :rbenv = false, no options below will be relevant
           :ruby => {
-              :rbenv    => false,
+              :rbenv    => true,
               :version  => '2.1.0',
               :gems     => [
-                  {:name => 'bundler'}
+                  {:name => 'bundler'},
+                  {:name => 'compass', :version => '~> 1.0.1'}
               ]
           },
           # Composer stuff (use w/ development branch of Concrete5.7+)

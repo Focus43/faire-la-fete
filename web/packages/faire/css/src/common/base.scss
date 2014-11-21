@@ -1,0 +1,32 @@
+// Basics
+html, body {font-size:$font-size-base;height:100%;-webkit-font-smoothing:antialiased;}
+body {overflow-x:hidden;}
+input, textarea, button, a {&:focus, &:active {outline:0 !important;@include box-shadow(none !important);}}
+a, a:hover, a:active {cursor:pointer;text-decoration:none !important;}
+img {@include img-responsive(inline-block);}
+.tabular {width:100%;height:100%;display:table;
+  .cellular {width:100%;height:100%;display:table-cell;vertical-align:middle;text-align:center;}
+}
+@include scrollbars(#5d5d5d, 5px);
+
+select {
+  -webkit-appearance:none;
+  -webkit-border-radius:0;
+}
+
+// headers
+#level-1, #level-2, .page-body{width:100%;height:100%;position:relative;}
+
+#level-1 {}
+
+#level-2 {}
+
+.page-body {}
+
+.percent-width {display:inline-block;width:100%;margin:0 auto;
+  &.p-65 {max-width:65%;}
+  &.p-75 {max-width:75%;}
+}
+
+// Fix scroll overflow while in edit mode
+html.cms-admin .page-body {height:calc(100% - 49px);}

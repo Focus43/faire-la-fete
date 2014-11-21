@@ -1,0 +1,13 @@
+nav {height:$nav-height-desktop;background:#fff;position:fixed;top:0;left:0;width:100%;z-index:9;border-bottom:3px solid $theme-green;
+  [class*="col-sm-"] {position:relative;}
+  .logo {position:absolute;top:-18px;left:0;}
+  .list-inline {padding-top:3rem;text-align:right;margin:0;font-size:0;line-height:0;
+    li {font-size:1.4rem;line-height:1;
+      a {color:$theme-purple;display:block;padding:1rem 2rem;}
+      span {display:inline-block;padding:0 4px 4px;border-bottom:2px solid transparent;}
+      &:hover, &.active {
+        span {border-bottom-color:$theme-green;}
+      }
+    }
+  }
+}
