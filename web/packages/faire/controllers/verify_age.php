@@ -26,17 +26,22 @@
          * @note: calculations are done against UTC time
          */
         public function verify(){
-            $dtNow   = new DateTime('now', new DateTimeZone('UTC'));
-            $dtBirth = DateTime::createFromFormat('n-j-Y', sprintf('%s-%s-%s', $_REQUEST['month'], $_REQUEST['day'], $_REQUEST['year']));
-            $diff    = $dtNow->diff($dtBirth, true);
-
-            // If of age, set cookie and redirect to originally requested page
-            if( (int) $diff->y > 21 ){
-                if( true ){
-                    setcookie(self::AGE_COOKIE_HANDLE, '1', 0, '/', '', FALSE, FALSE);
-                    header(sprintf("Location: %s", BASE_URL . $_REQUEST['fwd_to']));
-                    exit;
-                }
+            if( (int)$_REQUEST['month'] >= 1 && (int)$_REQUEST['day'] >= 1 && (int)$_REQUEST['year'] >= 1 ){
+                try {
+                    $dtNow   = new DateTime('now', new DateTimeZone('UTC'));
+                    $dtBirth = DateTime::createFromFormat('n-j-Y', sprintf('%s-%s-%s', (int)$_REQUEST['month'], (int)$_REQUEST['day'], (int)$_REQUEST['year']));
+                    if( is_a($dtNow, 'DateTime') && is_a($dtBirth, 'DateTime') ){
+                        $diff = $dtNow->diff($dtBirth, true);
+                        // If of age, set cookie and redirect to originally requested page
+                        if( (int) $diff->y > 21 ){
+                            if( true ){
+                                setcookie(self::AGE_COOKIE_HANDLE, '1', 0, '/', '', FALSE, FALSE);
+                                header(sprintf("Location: %s", BASE_URL . $_REQUEST['fwd_to']));
+                                exit;
+                            }
+                        }
+                    }
+                }catch(Exception $e){ /* do nothing */ }
             }
 
             // Ruh roh, you're too young. Set message.
