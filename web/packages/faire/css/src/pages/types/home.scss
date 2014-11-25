@@ -29,7 +29,7 @@
   .explore {height:50%;background:url('#{$image-path}barrels.jpg') no-repeat 50% 50%;background-size:cover;}
 
   .cellar {height:75%;background:url('#{$image-path}textured.jpg') 50% 50%;
-    .products {padding-bottom:1rem;}
+    .products {padding-bottom:2rem;}
     .product-desc {text-align:left;padding:0 2rem;display:none;
       &:nth-of-type(1) {display:block;}
       p {border-top:1px solid $theme-green;padding-top:1rem;}
