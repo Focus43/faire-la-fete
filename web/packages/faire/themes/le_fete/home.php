@@ -141,7 +141,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <h4>Style</h4>
-                                    <p>Cremant De Lemauex</p>
+                                    <p>Cremant De Limoux</p>
                                 </div>
                                 <div class="col-sm-4">
                                     <h4>Blend</h4>
