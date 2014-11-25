@@ -9,7 +9,7 @@
             <main class="page-body">
 
                 <section class="welcome">
-                    <div class="mast-slide" data-delay="3000" data-speed="0.65">
+                    <div class="mast-slide" data-delay="4200" data-speed="0.65" data-fade>
                         <div class="inner">
                             <div class="node tablespread">
                                 <div class="tabular">
@@ -51,8 +51,9 @@
                 <section class="history tabular">
                     <div class="cellular">
                         <div class="container-fluid p-75">
-                            <h1>Limoux: Birthplace of Faire Le Fete</h1>
-                            <p>Faire la Fête ¬ to create a party – originates in the village of Limoux where the world’s longest running annual carnival celebration allows revelers to dance, sing, celebrate and enjoy an endless flow of sparkling wine. Faire la Fête brings new relevance to sparkling wine for a generation seeking authenticity from every experience. </p>
+                            <!--<h1>Limoux: Birthplace of Faire La F&ecirc;te</h1>
+                            <p>Faire la Fête ¬ to create a party – originates in the village of Limoux where the world’s longest running annual carnival celebration allows revelers to dance, sing, celebrate and enjoy an endless flow of sparkling wine. Faire la Fête brings new relevance to sparkling wine for a generation seeking authenticity from every experience. </p>-->
+                            <?php $a = new Area('Main 1'); $a->display($c); ?>
                         </div>
                     </div>
                 </section>
@@ -63,20 +64,75 @@
 
                 <section class="cellar tabular">
                     <div class="cellular">
-                        <div class="container-fluid p-75">
-                            <h2 class="subheader">Cellar</h2>
+                        <div class="products">
+                            <div class="container-fluid product-desc m-1020">
+                                <h2 class="subheader">Cellar</h2>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <?php $a = new Area('Product Picture 1'); $a->display($c); ?>
+                                        <!--<img src="<?php echo FAIRE_IMAGE_PATH; ?>bottle_closeup.jpg" />-->
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h3>Product Description</h3>
+                                        <h4>Taste</h4>
+                                        <?php $a = new Area('Product Taste 1'); $a->display($c); ?>
+                                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>-->
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h4>Pairing</h4>
+                                        <?php $a = new Area('Product Pairing 1'); $a->display($c); ?>
+                                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid product-desc m-1020">
+                                <h2 class="subheader">Cellar</h2>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <?php $a = new Area('Product Picture 2'); $a->display($c); ?>
+                                        <!--<img src="<?php echo FAIRE_IMAGE_PATH; ?>bottle_closeup.jpg" />-->
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h3>Product Description</h3>
+                                        <h4>Taste</h4>
+                                        <?php $a = new Area('Product Taste 2'); $a->display($c); ?>
+                                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>-->
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h4>Pairing</h4>
+                                        <?php $a = new Area('Product Pairing 2'); $a->display($c); ?>
+                                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container-fluid product-desc m-1020">
+                                <h2 class="subheader">Cellar</h2>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <?php $a = new Area('Product Picture 3'); $a->display($c); ?>
+                                        <!--<img src="<?php echo FAIRE_IMAGE_PATH; ?>bottle_closeup.jpg" />-->
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h3>Product Description</h3>
+                                        <h4>Taste</h4>
+                                        <?php $a = new Area('Product Taste 3'); $a->display($c); ?>
+                                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>-->
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <h4>Pairing</h4>
+                                        <?php $a = new Area('Product Pairing 3'); $a->display($c); ?>
+                                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="container-fluid markers">
                             <div class="row">
-                                <div class="col-sm-4">
-                                    <img src="<?php echo FAIRE_IMAGE_PATH; ?>bottle_closeup.jpg" />
-                                </div>
-                                <div class="col-sm-4">
-                                    <h3>Product Description</h3>
-                                    <h4>Taste</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                                <div class="col-sm-4">
-                                    <h4>Pairing</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <div class="col-sm-6 col-sm-offset-3">
+                                    <a class="active"><i class="fa fa-circle"></i><i class="fa fa-circle-o"></i></a>
+                                    <a><i class="fa fa-circle"></i><i class="fa fa-circle-o"></i></a>
+                                    <a><i class="fa fa-circle"></i><i class="fa fa-circle-o"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +160,7 @@
                     </div>
                 </section>
 
-                <section class="experience">
+                <!--<section class="experience">
                     <div class="container">
                         <h2 class="subheader">Experience</h2>
                         <div class="row">
@@ -164,7 +220,7 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section>-->
 
                 <section class="contact tabular">
                     <div class="cellular">
@@ -172,7 +228,7 @@
                             <h2 class="subheader">Contact</h2>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <p>Interested in distributing, selling, or purchasing Faire La Fete? Visit <a>Curious Cork</a> or give us a shout below.</p>
+                                    <p>Interested in distributing, selling, or purchasing Faire la F&ecirc;te? Visit <a>Curious Cork</a> or give us a shout below.</p>
                                 </div>
                             </div>
                             <form class="contact-form" action="<?php echo FAIRE_TOOLS_PATH; ?>contact_form">

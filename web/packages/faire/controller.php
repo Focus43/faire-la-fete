@@ -21,7 +21,7 @@
 		 * @return string
 		 */
 	    public function getPackageDescription() {
-	        return t('Faire Le Fete site');
+	        return t('Faire La Fete site');
 	    }
 	
 		

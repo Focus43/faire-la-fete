@@ -1,4 +1,4 @@
-footer.tabular {position:relative;background:$theme-green;height:70px;
+footer.tabular {font-family:$font-family-pica;position:relative;background:$theme-green;height:70px;
   &::before {position:absolute;height:8px;content:'';display:block;bottom:100%;left:0;right:0;width:100%;background:transparent url('#{$image-path}footer_shine2.png') repeat-x 0 -6px;}
   p {color:#fff;margin:0;position:relative;bottom:-2px;}
 }

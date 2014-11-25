@@ -3,6 +3,9 @@ $fa-font-path:                  '/packages/faire/bower_components/font-awesome/f
 $image-path:                    '/packages/faire/images/';
 $theme-green:                   #91c713;
 $theme-purple:                  #401d56;
+$font-family-pica-sc:           'IM Fell DW Pica SC', serif;
+$font-family-pica:              'IM Fell DW Pica', serif;
+$font-family-crimson:           'Crimson Text', serif;
 
 // Specific elements
 $nav-height-desktop:            100px;
@@ -10,9 +13,10 @@ $nav-height-desktop:            100px;
 // Bootstrap
 $text-color:                    $theme-purple;
 $link-color:                    darken($theme-green, 20%);
-$font-family-serif:             'IM Fell DW Pica', serif;
+$font-family-serif:             $font-family-crimson;
 $font-family-base:              $font-family-serif;
-$font-base-size:                16px;
+$font-size-base:                16px;
+$headings-font-family:          $font-family-pica-sc;
 $btn-default-bg:                $theme-green;
 $btn-default-color:             #fff;
 $btn-default-border:            $theme-green;

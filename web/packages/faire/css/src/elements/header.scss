@@ -1,11 +1,11 @@
-header {height:$nav-height-desktop;background:#fff;position:fixed;top:0;left:0;width:100%;z-index:9;border-bottom:3px solid $theme-green;
+header {font-family:$font-family-pica;height:$nav-height-desktop;background:#fff;position:fixed;top:0;left:0;width:100%;z-index:9;border-bottom:3px solid $theme-green;@include transition(all 0.35s ease);
   .container {position:relative;}
-  .logo {position:absolute;top:-18px;left:0;}
+  .logo {position:absolute;top:-18px;left:0;@include transition(all 0.35s ease);}
   nav {
     [class*="col-sm-"] {position:relative;}
     .list-inline {padding-top:3rem;text-align:right;margin:0;font-size:0;line-height:0;
-      li {font-size:1.4rem;line-height:1;
-        a {color:$theme-purple;display:block;padding:1rem 2rem;text-decoration:none !important;}
+      li {font-size:1.2rem;line-height:1;
+        a {color:$theme-purple;display:block;padding:1rem;text-decoration:none !important;}
         span {display:inline-block;padding:0 4px 4px;border-bottom:2px solid transparent;}
         &:hover, &.active {
           span {border-bottom-color:$theme-green;}
@@ -13,5 +13,12 @@ header {height:$nav-height-desktop;background:#fff;position:fixed;top:0;left:0;w
       }
     }
   }
-}
 
+  &.collapse {@include transform(translateY(-100%));
+    .logo {left:50%;top:100%;margin-top:-18px;@include transform(translateX(-50%));}
+    nav {height:$nav-height-desktop;padding-top:1.6rem;background:#fff;position:relative;z-index:3;border-bottom:3px solid $theme-green;
+      .list-inline {padding-top:0;text-align:center;}
+    }
+    &:hover {@include transform(translateY(0));}
+  }
+}

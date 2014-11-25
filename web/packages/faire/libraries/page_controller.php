@@ -78,7 +78,7 @@
          */
         public function attachThemeAssets( Controller $pageController ){
             // CSS
-            $pageController->addHeaderItem('<link href="http://fonts.googleapis.com/css?family=IM+Fell+DW+Pica|Crimson+Text:400,600,700" rel="stylesheet" type="text/css">');
+            $pageController->addHeaderItem('<link href="http://fonts.googleapis.com/css?family=IM+Fell+DW+Pica:400,400italic|IM+Fell+DW+Pica+SC|Crimson+Text:400,600,400italic,600italic,700" rel="stylesheet" type="text/css">');
             $pageController->addHeaderItem( $this->getHelper('html')->css('core.css', FairePackage::PACKAGE_HANDLE) );
             $pageController->addHeaderItem( $this->getHelper('html')->css('app.css', FairePackage::PACKAGE_HANDLE) );
             // JS

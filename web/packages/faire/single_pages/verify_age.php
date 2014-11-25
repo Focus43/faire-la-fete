@@ -46,13 +46,14 @@
             </div>
             <div class="row remember">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <button type="submit" class="btn btn-default">Send</button>
+                    <button type="submit" class="btn btn-default">Join The Party</button>
                 </div>
             </div>
-            <div class="row">
+            <div class="row page-copy">
                 <div class="col-sm-12">
-                    <h3>We make our wine carefully. Please enjoy it that way too.</h3>
-                    <p>Please choose your country and enter your date of birth.</p>
+                    <p>We make our wine carefully. Please enjoy it that way too.</p>
+                    <p>&copy; 2014 Curious Cork Imports, Inc. | Curious Cork Imports&reg;<br/>All trademarks are the property of their respective owners.</p>
+                    <small>For more information about distributing Faire la F&ecirc;te, contact <a>Curious Cork</a>.</small>
                 </div>
             </div>
             <input type="hidden" name="fwd_to" value="<?php echo $fwdUrl; ?>" />
