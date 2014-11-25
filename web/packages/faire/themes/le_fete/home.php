@@ -8,7 +8,7 @@
         <div id="level-2">
             <main class="page-body">
 
-                <section class="welcome">
+                <section id="pg-origin" class="welcome">
                     <div class="mast-slide" data-delay="4200" data-speed="0.65" data-fade>
                         <div class="inner">
                             <div class="node tablespread">
@@ -62,7 +62,7 @@
                     <!-- stuff in here -->
                 </section>
 
-                <section class="cellar tabular">
+                <section id="pg-cellar" class="cellar tabular">
                     <div class="cellular">
                         <div class="products">
                             <div class="container-fluid product-desc m-1020">
@@ -218,7 +218,7 @@
                     </div>
                 </section>-->
 
-                <section class="contact tabular">
+                <section id="pg-contact" class="contact tabular">
                     <div class="cellular">
                         <div class="container-fluid m-800">
                             <h2 class="subheader">Contact</h2>
