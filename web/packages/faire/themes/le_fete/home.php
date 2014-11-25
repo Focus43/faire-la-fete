@@ -93,13 +93,11 @@
                                         <!--<img src="<?php echo FAIRE_IMAGE_PATH; ?>bottle_closeup.jpg" />-->
                                     </div>
                                     <div class="col-sm-4">
-                                        <h3>Product Description</h3>
-                                        <h4>Taste</h4>
+                                        <h3>Production Technique</h3>
                                         <?php $a = new Area('Product Taste 2'); $a->display($c); ?>
                                         <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>-->
                                     </div>
                                     <div class="col-sm-4">
-                                        <h4>Pairing</h4>
                                         <?php $a = new Area('Product Pairing 2'); $a->display($c); ?>
                                         <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
                                     </div>
@@ -113,13 +111,11 @@
                                         <!--<img src="<?php echo FAIRE_IMAGE_PATH; ?>bottle_closeup.jpg" />-->
                                     </div>
                                     <div class="col-sm-4">
-                                        <h3>Product Description</h3>
-                                        <h4>Taste</h4>
+                                        <h3>Unrivaled Quality</h3>
                                         <?php $a = new Area('Product Taste 3'); $a->display($c); ?>
                                         <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>-->
                                     </div>
                                     <div class="col-sm-4">
-                                        <h4>Pairing</h4>
                                         <?php $a = new Area('Product Pairing 3'); $a->display($c); ?>
                                         <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
                                     </div>
