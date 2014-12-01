@@ -29,10 +29,6 @@ select {
   &.m-800 {max-width:800px;}
   &.m-1020 {max-width:1020px;}
 }
-//.percent-width {padding:0 15px;display:inline-block;width:100%;margin:0 auto;
-//  &.p-65 {max-width:65%;}
-//  &.p-75 {max-width:75%;}
-//}
 
 h2.subheader {padding-bottom:30px;margin-top:0;margin-bottom:($grid-gutter-width * 1.5);text-align:center;background:transparent url('#{$image-path}divider.png') no-repeat 50% 100%;}
 

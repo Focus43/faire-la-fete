@@ -1,76 +1,146 @@
+/* global TweenLite */
+
+/**
+ * Simple jquery plugin whipped together for the faders/scrollers on the page.
+ * @author Focus43
+ */
+(function( $, Tween ){
+
+    /**
+     * Takes a dom node, looks at any data-* attributes, and converts to {key:value}
+     * javascript object; ie. data-speed="0.6" -> {speed:0.6}
+     * @param element
+     * @returns {{}}
+     */
+    function attributesToObject( element ){
+        var settings = {};
+        for( var i = 0, attrs = element.attributes, n = attrs.length; i < n; i++ ){
+            if(attrs[i].nodeName.indexOf('data-') !== -1){
+                var key = attrs[i].nodeName.replace('data-', '');
+                settings[key] = attrs[i].value;
+            }
+        }
+        return settings;
+    }
+
+    function CustomSlider( $selector, settings ){
+
+        // Final merged configs: settings first, and attributes can override
+        var element     = $selector.get(0),
+            configs     = $.extend(true, (settings || {}), attributesToObject(element)),
+            nodes       = element.querySelectorAll('.node'),
+            nodeCount   = nodes.length - 1,
+            delay       = +(configs.delay),
+            speed       = +(configs.speed);
+
+
+        if( $selector.hasClass('fade') ){
+            Tween.set(nodes, {autoAlpha:0});
+            Tween.set(nodes[0], {autoAlpha:1});
+            // Iterator
+            (function loop(pause, index){
+                setTimeout(function(){
+                    var node1 = (index === nodeCount) ? nodeCount : index,
+                        node2 = (index === nodeCount) ? 0 : index + 1;
+                    Tween.fromTo(nodes[node1], speed, {autoAlpha:1},{autoAlpha:0});
+                    Tween.fromTo(nodes[node2], speed, {autoAlpha:0}, {autoAlpha:1, onComplete:function(){
+                        loop(pause, (index === nodeCount ? 0 : index + 1));
+                    }});
+                }, pause);
+            })(delay, 0);
+        }
+
+        if( $selector.hasClass('circular-slide') ){
+            Tween.set(nodes[0], {x:'-100%'});
+            // Iterator
+            (function loop(pause, index){
+                setTimeout(function(){
+                    var node1 = (index === nodeCount) ? nodeCount : index,
+                        node2 = (index === nodeCount) ? 0 : index + 1;
+                    Tween.to(nodes[node1], speed, {x:'-200%'});
+                    Tween.to(nodes[node2], speed, {x:'-100%', onComplete:function(){
+                        Tween.set(nodes[node1], {clearProps:'all'});
+                        loop(pause, (index === nodeCount ? 0 : index + 1));
+                    }});
+                }, pause);
+            })(delay, 0);
+        }
+
+        if( $selector.hasClass('linear-slide') ){
+            var frag  = document.createDocumentFragment(),
+                inner = document.createElement('div');
+            inner.className = 'inner';
+            inner.style.width = nodes.length * 100 + '%';
+            Array.prototype.forEach.call(nodes, function( _node ){
+                _node.style.width = 100 / nodes.length + '%';
+                inner.appendChild(_node);
+            });
+            frag.appendChild(inner);
+            element.appendChild(frag);
+
+            var _active = 0;
+            $(configs.controls).on('click', function(){
+                var $clicked = $(this);
+                if($clicked.hasClass('left')){
+                    _active = (_active > 0) ? _active - 1 : 0;
+                }else{
+                    _active = (_active < nodeCount) ? _active + 1 : nodeCount;
+                }
+
+                Tween.to(inner, 1, {x:'-' + (100 / nodes.length) * _active + '%'});
+            });
+        }
+    }
+
+    $.fn.customSlider = function( settings ){
+        return this.each(function(idx, element){
+            var $selector = $(element);
+            if( ! $selector.data('customSlider') ){
+                $selector.data('customSlider', new CustomSlider($selector, settings));
+            }
+        });
+    };
+
+})( jQuery, TweenLite );
+
+/**
+ * Basic page stuff
+ */
 $(function( Tween ){
 
-    var slider       = document.querySelector('.mast-slide'),
-        $contactForm = $('.contact-form');
-
-    // If slider elements exists, run it
-    if( slider ){
-        var sliderNodes = slider.querySelectorAll('.node'),
-            nodeCount   = sliderNodes.length - 1,
-            sliderDelay = +(slider.getAttribute('data-delay')),
-            sliderSpeed = +(slider.getAttribute('data-speed'));
-
-        Tween.set(sliderNodes, {autoAlpha:0});
-        Tween.set(sliderNodes[0], {autoAlpha:1});
-
-        (function loop(pause, index){
-            setTimeout(function(){
-                var node1 = (index === nodeCount) ? nodeCount : index,
-                    node2 = (index === nodeCount) ? 0 : index + 1;
-                Tween.fromTo(sliderNodes[node1], sliderSpeed, {autoAlpha:1},{autoAlpha:0});
-                Tween.fromTo(sliderNodes[node2], sliderSpeed, {autoAlpha:0}, {autoAlpha:1, onComplete:function(){
-                    //Tween.set(sliderNodes[node1], {clearProps:'all'});
-                    loop(pause, (index === nodeCount ? 0 : index + 1));
-                }});
-            }, pause);
-        })(sliderDelay, 0);
-
-//        Tween.set(slider.querySelectorAll('.node')[0], {x:'-100%'});
-//
-//        (function loop(pause, index){
-//            setTimeout(function(){
-//                var node1 = (index === nodeCount) ? nodeCount : index,
-//                    node2 = (index === nodeCount) ? 0 : index + 1;
-//                Tween.to(sliderNodes[node1], sliderSpeed, {x:'-200%'});
-//                Tween.to(sliderNodes[node2], sliderSpeed, {x:'-100%', onComplete:function(){
-//                    Tween.set(sliderNodes[node1], {clearProps:'all'});
-//                    loop(pause, (index === nodeCount ? 0 : index + 1));
-//                }});
-//            }, pause);
-//        })(sliderDelay, 0);
-    }
+    // Init sliders
+    $('.custom-slider').customSlider();
 
     // If contact form element exists
-    if( $contactForm ){
-        $contactForm.on('submit', function( event ){
-            event.preventDefault();
-            $.post(this.getAttribute('action'), $contactForm.serialize(), function( resp ){
-                if( resp.ok ){
-                    $contactForm.empty().append('<h3>Thanks, we will be in touch shortly!</h3>');
-                }
-            }, 'json');
-        });
-    }
+    var $contactForm = $('.contact-form');
+    $contactForm.on('submit', function( event ){
+        event.preventDefault();
+        $.post(this.getAttribute('action'), $contactForm.serialize(), function( resp ){
+            if( resp.ok ){
+                $contactForm.empty().append('<h3>Thanks, we will be in touch shortly!</h3>');
+            }
+        }, 'json');
+    });
+
 
     // Navigation collapse on scroll
-    var collapseState = false;
-    (function _draw( scrollY, lastState ){
+    var $header       = $('header'),
+        collapseState = false,
+        scrollY       = window.pageYOffset,
+        lastState     = (scrollY > 100) ? true : false;
+    Tween.ticker.addEventListener('tick', function(){
         if( (scrollY !== window.pageYOffset) ){
             scrollY        = window.pageYOffset;
             collapseState  = (scrollY > 100) ? true : false;
             if( lastState !== collapseState ){
                 lastState = collapseState;
-                document.querySelector('header').classList.toggle('collapse');
+                $header.toggleClass('collapse', collapseState);
             }
         }
-        // Repeat the loop
-        requestAnimationFrame(_draw.bind(null, scrollY, lastState));
-    })( window.pageYOffset, collapseState );
+    });
+
 
     // Product descriptions
-//    document.querySelector('.markers').addEventListener('click', function( ev ){
-//        console.log('clicked', this, ev);
-//    }, false);
     $('a', '.markers').on('click', function(){
         var $this = $(this),
             index = $this.index();
@@ -79,6 +149,7 @@ $(function( Tween ){
         $this.addClass('active');
     });
 
+
     // Smooth scrolling
     $(function() {
         $('a[href*=#]:not([href=#])').click(function() {
@@ -86,9 +157,7 @@ $(function( Tween ){
                 var target = $(this.hash);
                 target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
                 if (target.length) {
-                    $('html,body').animate({
-                        scrollTop: target.offset().top - 140
-                    }, 1000);
+                    Tween.to(window, 0.65, {scrollTo:{y:target.offset().top - 140}});
                     return false;
                 }
             }

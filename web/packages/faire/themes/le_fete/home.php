@@ -9,8 +9,7 @@
             <main class="page-body">
 
                 <section id="pg-origin" class="welcome">
-                    <div class="mast-slide" data-delay="4200" data-speed="0.65" data-fade>
-                        <div class="inner">
+                    <div class="custom-slider fade" data-delay="4200" data-speed="0.65">
                             <div class="node tablespread">
                                 <div class="tabular">
                                     <div class="cellular">
@@ -39,7 +38,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         <div class="tagline tabular">
                             <div class="cellular">
                                 <img src="<?php echo FAIRE_IMAGE_PATH; ?>cantstopwontstop.png" />
@@ -59,7 +57,14 @@
                 </section>
 
                 <section class="explore">
+                    <div class="custom-slider linear-slide" data-controls=".arrows" data-speed="0.65">
+                        <div class="node barrels"></div>
+                        <div class="node vineyard"></div>
+                    </div>
+
                     <!-- stuff in here -->
+                    <a class="arrows left"><span></span></a>
+                    <a class="arrows right"><span></span></a>
                 </section>
 
                 <section id="pg-cellar" class="cellar tabular">
@@ -156,7 +161,7 @@
                     </div>
                 </section>
 
-                <!--<section class="experience">
+                <section class="experience">
                     <div class="container">
                         <h2 class="subheader">Experience</h2>
                         <div class="row">
@@ -216,7 +221,7 @@
                             </div>
                         </div>
                     </div>
-                </section>-->
+                </section>
 
                 <section id="pg-contact" class="contact tabular">
                     <div class="cellular">
