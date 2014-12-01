@@ -123,13 +123,19 @@ $(function( Tween ){
     });
 
 
-    // Navigation collapse on scroll
+    // Navigation collapse on scroll and bubble parallax
     var $header       = $('header'),
         collapseState = false,
         scrollY       = window.pageYOffset,
-        lastState     = (scrollY > 100) ? true : false;
+        lastState     = (scrollY > 100) ? true : false,
+        _historyEl    = document.querySelector('main .history'),
+        _bgPosY       = 0;
     Tween.ticker.addEventListener('tick', function(){
         if( (scrollY !== window.pageYOffset) ){
+            // bubble parallax
+            _bgPosY = (scrollY < window.pageYOffset) ? _bgPosY - 20 : _bgPosY + 20;
+            Tween.set(_historyEl, {backgroundPosition:'50% '+ _bgPosY +'px'});
+            // naviation collapse
             scrollY        = window.pageYOffset;
             collapseState  = (scrollY > 100) ? true : false;
             if( lastState !== collapseState ){
