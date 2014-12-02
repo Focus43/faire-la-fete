@@ -14,31 +14,34 @@
             </div>
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <?php echo $formHelper->select('countries', $countries, 'US', array('class' => 'form-control')); ?>
+                    <div class="select-menus">
+                        <div class="list-wrap arrow">
+                            <?php echo $formHelper->select('country', $countryList, 'US', array('class' => 'form-control')); ?>
+                        </div>
+                        <div class="lists-inline">
+                            <div class="inner">
+                                <div class="list-wrap">
+                                    <?php echo $formHelper->select('month', $monthList, '', array('class' => 'form-control')); ?>
+                                </div>
+                                <div class="list-wrap">
+                                    <?php echo $formHelper->select('day', $dayList, '', array('class' => 'form-control')); ?>
+                                </div>
+                                <div class="list-wrap">
+                                    <?php echo $formHelper->select('year', $yearList, '', array('class' => 'form-control')); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <div class="row form-inline">
+            <!--<div class="row form-inline">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <select name="month" class="form-control">
-                        <option>Month</option>
-                        <?php foreach(range(1,12) as $month): ?>
-                            <option value="<?php echo $month; ?>"><?php echo $month; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    <select name="day" class="form-control">
-                        <option>Day</option>
-                        <?php foreach(range(1,31) as $day): ?>
-                            <option value="<?php echo $day; ?>"><?php echo $day; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    <select name="year" class="form-control">
-                        <option>Year</option>
-                        <?php $y = (int)date('Y'); foreach(range($y, $y-100) as $year): ?>
-                            <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
-                        <?php endforeach; ?>
-                    </select>
+                    <?php //echo $formHelper->select('month', $monthList, '', array('class' => 'form-control')); ?>
+                    <?php //echo $formHelper->select('day', $dayList, '', array('class' => 'form-control')); ?>
+                    <?php //echo $formHelper->select('year', $yearList, '', array('class' => 'form-control')); ?>
                 </div>
-            </div>
+            </div>-->
             <div class="row remember">
                 <div class="col-sm-6 col-sm-offset-3">
                     <input type="checkbox"> Remember Me For Future Browsing

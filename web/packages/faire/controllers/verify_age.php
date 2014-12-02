@@ -15,7 +15,11 @@
             parent::view();
             $this->set('fwdUrl', $_REQUEST['fwd']);
             $this->set('formHelper', $this->getHelper('form'));
-            $this->set('countries', $this->getHelper('ages', 'faire')->listFormat());
+            $this->set('countryList', array('' => 'Country') + $this->getHelper('ages', 'faire')->listFormat());
+            $this->set('monthList', array('' => 'Month') + array_combine(range(1,12),range(1,12)));
+            $this->set('dayList', array('' => 'Day') + array_combine(range(1,31),range(1,31)));
+            $y = (int)date('Y');
+            $this->set('yearList', array('' => 'Year') + array_combine(range($y,$y-100),range($y,$y-100)));
         }
 
 
@@ -27,7 +31,7 @@
          */
         public function verify(){
             $agesByCountry = $this->getHelper('ages', 'faire')->ageByCountry();
-            $minimumAge    = (int) $agesByCountry[$_REQUEST['countries']];
+            $minimumAge    = (int) $agesByCountry[$_REQUEST['country']];
 
             if( (int)$_REQUEST['month'] >= 1 && (int)$_REQUEST['day'] >= 1 && (int)$_REQUEST['year'] >= 1 ){
                 try {

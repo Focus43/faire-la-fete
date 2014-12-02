@@ -7,9 +7,13 @@
     .underage {font-size:1.4rem;position:absolute;bottom:100%;left:0;right:0;width:100%;padding:1rem;background:#bd362f;color:darken(#bd362f, 25%);}
     h1 {margin:0 0 5px;}
     h1 ~ p {margin-bottom:2rem;}
-    select {border:0;font-family:$font-family-sans-serif;}
-    .form-inline {font-size:0;line-height:0;
-      select {width:33.33%;font-size:1rem;line-height:1;}
+    select {border:0;font-family:$font-family-crimson;}
+    .list-wrap {position:relative;display:inline-block;width:100%;margin:5px 0;
+      &.arrow::after {content:'';display:block;width:35px;background:$theme-purple url('#{$image-path}down_arrow.png') no-repeat 50% 50%;position:absolute;top:0;right:0;bottom:0;z-index:2;}
+    }
+    .lists-inline {font-size:0;line-height:0;margin:0 -2%;
+      .inner {margin:0 -3px;}
+      .list-wrap {width:32%;padding:0 3px;}
     }
     .remember {margin:1rem 0 2rem;}
     .page-copy {
