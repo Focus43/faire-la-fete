@@ -33,7 +33,7 @@
                     </select>
                     <select name="year" class="form-control">
                         <option>Year</option>
-                        <?php $y = (int)date('Y'); foreach(range($y-21,$y-100) as $year): ?>
+                        <?php $y = (int)date('Y'); foreach(range($y, $y-100) as $year): ?>
                             <option value="<?php echo $year; ?>"><?php echo $year; ?></option>
                         <?php endforeach; ?>
                     </select>

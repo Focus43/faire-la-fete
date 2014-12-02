@@ -15,7 +15,7 @@
             parent::view();
             $this->set('fwdUrl', $_REQUEST['fwd']);
             $this->set('formHelper', $this->getHelper('form'));
-            $this->set('countries', $this->getHelper('lists/countries')->getCountries());
+            $this->set('countries', $this->getHelper('ages', 'faire')->listFormat());
         }
 
 
@@ -26,6 +26,9 @@
          * @note: calculations are done against UTC time
          */
         public function verify(){
+            $agesByCountry = $this->getHelper('ages', 'faire')->ageByCountry();
+            $minimumAge    = (int) $agesByCountry[$_REQUEST['countries']];
+
             if( (int)$_REQUEST['month'] >= 1 && (int)$_REQUEST['day'] >= 1 && (int)$_REQUEST['year'] >= 1 ){
                 try {
                     $dtNow   = new DateTime('now', new DateTimeZone('UTC'));
@@ -33,7 +36,7 @@
                     if( is_a($dtNow, 'DateTime') && is_a($dtBirth, 'DateTime') ){
                         $diff = $dtNow->diff($dtBirth, true);
                         // If of age, set cookie and redirect to originally requested page
-                        if( (int) $diff->y > 21 ){
+                        if( (int) $diff->y > $minimumAge ){
                             if( true ){
                                 setcookie(self::AGE_COOKIE_HANDLE, '1', 0, '/', '', FALSE, FALSE);
                                 header(sprintf("Location: %s", BASE_URL . $_REQUEST['fwd_to']));
