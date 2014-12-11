@@ -37,7 +37,7 @@ header {font-family:$font-family-pica;height:auto;background:#fff;position:fixed
 
     &.collapse {@include transform(translateY(-100%));
       .logo {left:50%;top:100%;margin-top:-18px;@include transform(translateX(-50%));}
-      nav {height:$nav-height-desktop;padding-top:1.6rem;background:#fff;position:relative;z-index:3;border-bottom:3px solid $theme-green;
+      nav {height:$nav-height-desktop;padding-top:1.6rem;background:#fff;position:relative;z-index:3;//border-bottom:3px solid $theme-green;
         .list-inline {padding-top:0;text-align:center;}
       }
       &:hover {@include transform(translateY(0));}
