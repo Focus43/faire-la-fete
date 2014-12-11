@@ -1,4 +1,5 @@
 /* global TweenLite */
+/* global Modernizr */
 
 /**
  * Simple jquery plugin whipped together for the faders/scrollers on the page.
@@ -53,17 +54,36 @@
         if( $selector.hasClass('circular-slide') ){
             Tween.set(nodes[0], {x:'-100%'});
             // Iterator
-            (function loop(pause, index){
-                setTimeout(function(){
-                    var node1 = (index === nodeCount) ? nodeCount : index,
-                        node2 = (index === nodeCount) ? 0 : index + 1;
-                    Tween.to(nodes[node1], speed, {x:'-200%'});
-                    Tween.to(nodes[node2], speed, {x:'-100%', onComplete:function(){
-                        Tween.set(nodes[node1], {clearProps:'all'});
-                        loop(pause, (index === nodeCount ? 0 : index + 1));
-                    }});
-                }, pause);
-            })(delay, 0);
+//            (function loop(pause, index){
+//                setTimeout(function(){
+//                    var node1 = (index === nodeCount) ? nodeCount : index,
+//                        node2 = (index === nodeCount) ? 0 : index + 1;
+//                    Tween.to(nodes[node1], speed, {x:'-200%'});
+//                    Tween.to(nodes[node2], speed, {x:'-100%', onComplete:function(){
+//                        Tween.set(nodes[node1], {clearProps:'all'});
+//                        loop(pause, (index === nodeCount ? 0 : index + 1));
+//                    }});
+//                }, pause);
+//            })(delay, 0);
+
+            var _current = 0;
+            $(configs.controls).on('click', function(){
+                var $clicked  = $(this),
+                    next;
+                if($clicked.hasClass('left')){
+                    next = (_current > 0) ? _current - 1 : nodeCount;
+                    console.log(_current, next);
+                    Tween.set(nodes[next], {x:'-200%'});
+                    Tween.to(nodes[_current], speed, {x:'0%'});
+                    Tween.to(nodes[next], speed, {x:'-100%'});
+                }else{
+                    next = (_current < nodeCount) ? _current + 1 : 0;
+                    Tween.set(nodes[next], {clearProps:'all'});
+                    Tween.to(nodes[_current], speed, {x:'-200%'});
+                    Tween.to(nodes[next], speed, {x:'-100%'});
+                }
+                _current = next;
+            });
         }
 
         if( $selector.hasClass('linear-slide') ){
@@ -108,6 +128,11 @@
  */
 $(function( Tween ){
 
+    /** requestAnimationFrame shim - use native/prefixed first, backup to setTimeout */
+    window.requestAnimFrame = Modernizr.prefixed('requestAnimationFrame', window) || function(callback){
+        window.setTimeout(callback, 1000/ 60);
+    };
+
     // Init sliders
     $('.custom-slider').customSlider();
 
@@ -122,28 +147,47 @@ $(function( Tween ){
         }, 'json');
     });
 
+    var $headerElement       = $('header'),
+        navCollapseThreshold = 100,
+        navCollapseState     = false,
+        navCollapseLastState = (window.pageYOffset > navCollapseThreshold),
+        $parallaxElement     = $('.history'),
+        parallaxPositionY    = 0,
+        $markers             = $('.markers'),
+        markerPositionY      = $markers.offset().top,
+        windowHeight         = $(window).height(),
+        markersBeenAnimated  = false;
 
-    // Navigation collapse on scroll and bubble parallax
-    var $header       = $('header'),
-        collapseState = false,
-        scrollY       = window.pageYOffset,
-        lastState     = (scrollY > 100) ? true : false,
-        _historyEl    = document.querySelector('main .history'),
-        _bgPosY       = 0;
-    Tween.ticker.addEventListener('tick', function(){
-        if( (scrollY !== window.pageYOffset) ){
-            // bubble parallax
-            _bgPosY = (scrollY < window.pageYOffset) ? _bgPosY - 20 : _bgPosY + 20;
-            Tween.set(_historyEl, {backgroundPosition:'50% '+ _bgPosY +'px'});
-            // naviation collapse
-            scrollY        = window.pageYOffset;
-            collapseState  = (scrollY > 100) ? true : false;
-            if( lastState !== collapseState ){
-                lastState = collapseState;
-                $header.toggleClass('collapse', collapseState);
+    Tween.set($('a',$markers), {top:100});
+
+    (function _draw( lastScroll ){
+        if( lastScroll !== window.pageYOffset ){
+            // Parallax BEFORE adjusting lastScroll
+            parallaxPositionY = (lastScroll < window.pageYOffset) ? parallaxPositionY - 20 : parallaxPositionY + 20;
+            Tween.set($parallaxElement, {backgroundPosition:'50% ' + parallaxPositionY + 'px'});
+
+            // Set last scroll position
+            lastScroll = window.pageYOffset;
+
+            // Collapse navigation?
+            navCollapseState = (lastScroll > navCollapseThreshold);
+            if( navCollapseState !== navCollapseLastState ){
+                navCollapseLastState = navCollapseState;
+                $headerElement.toggleClass('collapse', navCollapseState);
+            }
+
+            // Markers?
+            if( ! markersBeenAnimated ){
+                if( (lastScroll >= (markerPositionY - windowHeight + 50)) ){
+                    markersBeenAnimated = true;
+                    $('a', $markers).each(function(index, el){
+                        Tween.to(el, 1, {top:0, delay:(index * 0.25)});
+                    });
+                }
             }
         }
-    });
+        window.requestAnimFrame(_draw.bind(null, lastScroll));
+    })( window.pageYOffset );
 
 
     // Product descriptions

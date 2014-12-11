@@ -1,6 +1,6 @@
 <header>
-    <div class="container">
-        <a class="logo" href="/">
+    <div class="container text-right">
+        <a class="logo" href="#level-1">
             <img src="<?php echo FAIRE_IMAGE_PATH; ?>logo.png" />
         </a>
 

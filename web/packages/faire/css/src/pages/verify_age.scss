@@ -1,25 +1,30 @@
 .verify-age {background:url('#{$image-path}bg_verify_age.jpg') no-repeat 50% 50%;background-size:cover;@include text-shadow(0 0 10px rgba(0,0,0,0.4));
+  .page-body {padding-top:110px;}
+
   header, footer {display:none;}
 
-  .logo {display:block;position:absolute;top:-18px;left:50%;margin-left:-179px;}
+  .logo {display:block;position:absolute;top:-18px;left:50%;margin-left:-179px;z-index:2;}
 
-  form {position:relative;color:#fff;background:rgba(0,0,0,0.5);padding:3rem 2rem;display:inline-block;width:100%;max-width:920px;
-    .underage {font-size:1.4rem;position:absolute;bottom:100%;left:0;right:0;width:100%;padding:1rem;background:#bd362f;color:darken(#bd362f, 25%);}
-    h1 {margin:0 0 5px;}
-    h1 ~ p {margin-bottom:2rem;}
-    select {border:0;font-family:$font-family-crimson;}
-    .list-wrap {position:relative;display:inline-block;width:100%;margin:5px 0;
-      &.arrow::after {content:'';display:block;width:35px;background:$theme-purple url('#{$image-path}down_arrow.png') no-repeat 50% 50%;position:absolute;top:0;right:0;bottom:0;z-index:2;}
-    }
-    .lists-inline {font-size:0;line-height:0;margin:0 -2%;
-      .inner {margin:0 -3px;}
-      .list-wrap {width:32%;padding:0 3px;}
-    }
-    .remember {margin:1rem 0 2rem;}
-    .page-copy {
-      a {color:#fff;}
-      p:nth-of-type(1){font-size:140%;}
-      p:nth-of-type(2){font-size:100%;}
+  #verify-age-page {
+    form {position:relative;color:#fff;background:rgba(0,0,0,0.5);padding:3rem 2rem;display:inline-block;width:100%;max-width:920px;
+      .underage {font-size:1.4rem;position:absolute;bottom:100%;left:0;right:0;width:100%;padding:1rem;background:#bd362f;color:darken(#bd362f, 25%);}
+      h1 {margin:0 0 5px;}
+      h1 ~ p {margin-bottom:2rem;}
+      select {border:0;font-family:$font-family-crimson;-webkit-appearance:none;-webkit-border-radius:0;}
+      .list-wrap {position:relative;display:inline-block;width:100%;margin:5px 0;
+        &.arrow::after {content:'';display:block;width:35px;background:$theme-purple url('#{$image-path}down_arrow.png') no-repeat 50% 50%;position:absolute;top:0;right:0;bottom:0;z-index:2;}
+      }
+      .lists-inline {font-size:0;line-height:0;margin:0 -2%;
+        .inner {margin:0 -3px;}
+        .list-wrap {width:32%;padding:0 3px;}
+      }
+      .remember {margin:1rem 0 2rem;}
+      .page-copy {
+        a {color:#fff;}
+        p:nth-of-type(1){font-size:140%;}
+        p:nth-of-type(2){font-size:100%;}
+        p:nth-of-type(3){font-size:80%;}
+      }
     }
   }
 }

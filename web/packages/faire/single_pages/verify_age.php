@@ -1,6 +1,6 @@
 <a class="logo" href="/"><img src="<?php echo FAIRE_IMAGE_PATH; ?>logo.png" /></a>
 
-<div class="tabular">
+<div id="verify-age-page" class="tabular">
     <div class="cellular">
         <form id="agify" method="post" action="<?php echo $this->action('verify'); ?>">
             <?php if($underage): ?>
@@ -35,13 +35,6 @@
 
                 </div>
             </div>
-            <!--<div class="row form-inline">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <?php //echo $formHelper->select('month', $monthList, '', array('class' => 'form-control')); ?>
-                    <?php //echo $formHelper->select('day', $dayList, '', array('class' => 'form-control')); ?>
-                    <?php //echo $formHelper->select('year', $yearList, '', array('class' => 'form-control')); ?>
-                </div>
-            </div>-->
             <div class="row remember">
                 <div class="col-sm-6 col-sm-offset-3">
                     <input type="checkbox"> Remember Me For Future Browsing
@@ -54,9 +47,10 @@
             </div>
             <div class="row page-copy">
                 <div class="col-sm-12">
-                    <p>We make our wine carefully. Please enjoy it that way too.</p>
+                    <?php $a = new Area('Main'); $a->display($c); ?>
+                    <!--<p>We make our wine carefully. Please enjoy it that way too.</p>
                     <p>&copy; 2014 Curious Cork Imports, Inc. | Curious Cork Imports&reg;<br/>All trademarks are the property of their respective owners.</p>
-                    <small>For more information about distributing Faire la F&ecirc;te, contact <a>Curious Cork</a>.</small>
+                    <small>For more information about distributing Faire la F&ecirc;te, contact <a>Curious Cork</a>.</small>-->
                 </div>
             </div>
             <input type="hidden" name="fwd_to" value="<?php echo $fwdUrl; ?>" />

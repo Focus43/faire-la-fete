@@ -8,63 +8,25 @@
         <div id="level-2">
             <main class="page-body">
 
-                <section id="pg-origin" class="welcome">
-                    <div class="custom-slider fade" data-delay="4200" data-speed="0.65">
-                            <div class="node tablespread">
-                                <div class="tabular">
-                                    <div class="cellular">
-                                        <img src="<?php echo FAIRE_IMAGE_PATH; ?>cantstopwontstop.png" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="node poolparty">
-                                <div class="tabular">
-                                    <div class="cellular">
-                                        <img src="<?php echo FAIRE_IMAGE_PATH; ?>cantstopwontstop.png" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="node winepour">
-                                <div class="tabular">
-                                    <div class="cellular">
-                                        <img src="<?php echo FAIRE_IMAGE_PATH; ?>cantstopwontstop.png" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="node smilingbro">
-                                <div class="tabular">
-                                    <div class="cellular">
-                                        <img src="<?php echo FAIRE_IMAGE_PATH; ?>cantstopwontstop.png" />
-                                    </div>
-                                </div>
-                            </div>
-                        <div class="tagline tabular">
-                            <div class="cellular">
-                                <img src="<?php echo FAIRE_IMAGE_PATH; ?>cantstopwontstop.png" />
-                            </div>
-                        </div>
-                    </div>
+                <section class="welcome">
+                    <?php
+                        $stackObj = Stack::getByName(FairePackage::STACK_NAME_MASTHEAD); /** @var Stack $stackObj */
+                        if( $stackObj ){
+                            $stackObj->display();
+                        }
+                    ?>
                 </section>
 
-                <section class="history tabular">
+                <section id="pg-origin" class="history tabular">
                     <div class="cellular">
                         <div class="container-fluid p-75">
-                            <!--<h1>Limoux: Birthplace of Faire La F&ecirc;te</h1>
-                            <p>Faire la Fête ¬ to create a party – originates in the village of Limoux where the world’s longest running annual carnival celebration allows revelers to dance, sing, celebrate and enjoy an endless flow of sparkling wine. Faire la Fête brings new relevance to sparkling wine for a generation seeking authenticity from every experience. </p>-->
                             <?php $a = new Area('Main 1'); $a->display($c); ?>
                         </div>
                     </div>
                 </section>
 
                 <section class="explore">
-                    <div class="custom-slider linear-slide" data-controls=".arrows" data-speed="0.65">
-                        <div class="node barrels"></div>
-                        <div class="node vineyard"></div>
-                    </div>
-
-                    <!-- stuff in here -->
-                    <a class="arrows left"><span></span></a>
-                    <a class="arrows right"><span></span></a>
+                    <?php $a = new Area('Explore'); $a->display($c); ?>
                 </section>
 
                 <section id="pg-cellar" class="cellar tabular">
@@ -75,18 +37,15 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <?php $a = new Area('Product Picture 1'); $a->display($c); ?>
-                                        <!--<img src="<?php echo FAIRE_IMAGE_PATH; ?>bottle_closeup.jpg" />-->
                                     </div>
                                     <div class="col-sm-4">
                                         <h3>Product Description</h3>
                                         <h4>Taste</h4>
                                         <?php $a = new Area('Product Taste 1'); $a->display($c); ?>
-                                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>-->
                                     </div>
                                     <div class="col-sm-4">
                                         <h4>Pairing</h4>
                                         <?php $a = new Area('Product Pairing 1'); $a->display($c); ?>
-                                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
                                     </div>
                                 </div>
                             </div>
@@ -95,16 +54,13 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <?php $a = new Area('Product Picture 2'); $a->display($c); ?>
-                                        <!--<img src="<?php echo FAIRE_IMAGE_PATH; ?>bottle_closeup.jpg" />-->
                                     </div>
                                     <div class="col-sm-4">
                                         <h3>Production Technique</h3>
                                         <?php $a = new Area('Product Taste 2'); $a->display($c); ?>
-                                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>-->
                                     </div>
                                     <div class="col-sm-4">
                                         <?php $a = new Area('Product Pairing 2'); $a->display($c); ?>
-                                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
                                     </div>
                                 </div>
                             </div>
@@ -113,16 +69,13 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <?php $a = new Area('Product Picture 3'); $a->display($c); ?>
-                                        <!--<img src="<?php echo FAIRE_IMAGE_PATH; ?>bottle_closeup.jpg" />-->
                                     </div>
                                     <div class="col-sm-4">
                                         <h3>Unrivaled Quality</h3>
                                         <?php $a = new Area('Product Taste 3'); $a->display($c); ?>
-                                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>-->
                                     </div>
                                     <div class="col-sm-4">
                                         <?php $a = new Area('Product Pairing 3'); $a->display($c); ?>
-                                        <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
                                     </div>
                                 </div>
                             </div>
@@ -145,16 +98,13 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <h4>Style</h4>
-                                    <p>Cremant De Limoux</p>
+                                    <?php $a = new Area('Product Details 1'); $a->display($c); ?>
                                 </div>
                                 <div class="col-sm-4">
-                                    <h4>Blend</h4>
-                                    <p>Chardonnay, Chenin Blanc, and Pinot Noir</p>
+                                    <?php $a = new Area('Product Details 2'); $a->display($c); ?>
                                 </div>
                                 <div class="col-sm-4">
-                                    <h4>Alcohol/Volume</h4>
-                                    <p>12%</p>
+                                    <?php $a = new Area('Product Details 3'); $a->display($c); ?>
                                 </div>
                             </div>
                         </div>

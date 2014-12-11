@@ -2,11 +2,12 @@
 	
 	class FairePackage extends Package {
 
-        const PACKAGE_HANDLE            = 'faire';
+        const PACKAGE_HANDLE            = 'faire',
+              STACK_NAME_MASTHEAD       = 'Masthead';
 
 	    protected $pkgHandle 			= self::PACKAGE_HANDLE;
 	    protected $appVersionRequired 	= '5.6.2.1';
-	    protected $pkgVersion 			= '0.01';
+	    protected $pkgVersion 			= '0.02';
 	
 		
 		/**
@@ -101,7 +102,8 @@
 				 ->setupTheme()
 				 ->setupPageTypes()
                  ->assignPageTypes()
-                 ->setupSinglePages();
+                 ->setupSinglePages()
+                 ->setupStacks();
 		}
 
 
@@ -202,6 +204,18 @@
          */
         private function setupSinglePages(){
             SinglePage::add('/verify_age', $this->packageObject());
+
+            return $this;
+        }
+
+
+        /**
+         * @return FairePackage
+         */
+        private function setupStacks(){
+            if( ! Stack::getByName(self::STACK_NAME_MASTHEAD) ){
+                Stack::addStack(self::STACK_NAME_MASTHEAD, Stack::ST_TYPE_GLOBAL_AREA);
+            }
 
             return $this;
         }

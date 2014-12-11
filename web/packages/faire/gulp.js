@@ -25,10 +25,6 @@ module.exports = function( gulp ){
         js: {
             core: [
                 _packagePath('bower_components/fastclick/lib/fastclick.js'),
-//                _packagePath('bower_components/angular/angular.js'),
-//                _packagePath('bower_components/angular-resource/angular-resource.js'),
-//                _packagePath('bower_components/angular-route/angular-route.js'),
-                //_packagePath('bower_components/angular-animate/angular-animate.js'),
                 _packagePath('bower_components/gsap/src/uncompressed/TweenLite.js'),
                 _packagePath('bower_components/gsap/src/uncompressed/TimelineLite.js'),
                 _packagePath('bower_components/gsap/src/uncompressed/easing/EasePack.js'),
