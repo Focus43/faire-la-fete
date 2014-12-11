@@ -48,9 +48,6 @@
             <div class="row page-copy">
                 <div class="col-sm-12">
                     <?php $a = new Area('Main'); $a->display($c); ?>
-                    <!--<p>We make our wine carefully. Please enjoy it that way too.</p>
-                    <p>&copy; 2014 Curious Cork Imports, Inc. | Curious Cork Imports&reg;<br/>All trademarks are the property of their respective owners.</p>
-                    <small>For more information about distributing Faire la F&ecirc;te, contact <a>Curious Cork</a>.</small>-->
                 </div>
             </div>
             <input type="hidden" name="fwd_to" value="<?php echo $fwdUrl; ?>" />
