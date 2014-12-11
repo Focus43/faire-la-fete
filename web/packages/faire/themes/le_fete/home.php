@@ -179,7 +179,7 @@
                             <h2 class="subheader">Contact</h2>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <p>Interested in distributing, selling, or purchasing Faire la F&ecirc;te? Visit <a>Curious Cork</a> or give us a shout below.</p>
+                                    <?php $a = new Area('Contact'); $a->display($c); ?>
                                 </div>
                             </div>
                             <form class="contact-form" action="<?php echo FAIRE_TOOLS_PATH; ?>contact_form">
